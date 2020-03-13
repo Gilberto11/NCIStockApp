@@ -12,8 +12,10 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'bootstrap', '~> 4.4', '>= 4.4.1'
+gem 'bootstrap', '~> 4.4', '>= 4.4.1' #bootstrap gem as per requirement
 gem 'jquery-rails'
+gem 'stock_quote', '~> 3.0' # using a third party gem as part of the requirement
+gem 'iex-ruby-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
