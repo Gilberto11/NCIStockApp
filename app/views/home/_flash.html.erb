@@ -1,0 +1,12 @@
+<!-- creating a flash loop to listen to name, msg-->
+<% flash.each do |name, msg| %>
+	<!-- alerts from bootstrap-->
+	<div class="alert alert-warning alert dismissable" role="alert">
+		<!-- creating a closing warning button -->
+		<button class = "close" data-dismiss="alert">
+			<small><sup>x</sup></small>
+		</button>
+		<%= content_tag(:div, msg) %>
+	</div>
+
+<% end %>
