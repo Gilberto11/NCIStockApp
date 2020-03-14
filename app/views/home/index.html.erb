@@ -8,9 +8,12 @@
 
 <br/>
 
-<!-- error handling calling the variable @stock defined the in the home controller-->
+<!-- if the field has a company symbol returns company name and pricer-->
 <% if @stock %>
 	<%= @stock.company_name %><br/>
 	$<%= @stock.latest_price %><br/>
+<!-- else if statment in case the field is empty then return the message defined for the variable empty in the home controller-->
+<% elsif @empty %>
+	<%= @empty %>
 <% end %>
 
