@@ -6,6 +6,11 @@
 <%= submit_tag 'Lookup' %>
 <% end %>
 
-<%= StockQuote::Stock.new(api_key:'pk_ed3bf1990f8a4bdcaa33dc9a9f725a7c')%>
-<% @stock = StockQuote::Stock.quote("fb") %>
+<br/>
+
+<!-- error handling calling the variable @stock defined the in the home controller-->
+<% if @stock %>
+	<%= @stock.company_name %><br/>
+	$<%= @stock.latest_price %><br/>
+<% end %>
 
