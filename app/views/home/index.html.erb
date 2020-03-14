@@ -12,6 +12,7 @@
 <% if @stock %>
 	<%= @stock.company_name %><br/>
 	$<%= @stock.latest_price %><br/>
+	 
 <!-- else if statment in case the field is empty then return the message defined for the variable empty in the home controller-->
 <% elsif @empty %>
 	<%= @empty %>
