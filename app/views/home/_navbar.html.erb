@@ -10,11 +10,21 @@
       <li class="nav-item">
       	<%=  link_to "About", home_about_path, class: "nav-link" %>
       </li>
-
+      <!-- creating a if statement to show that if a user is already logged in, only shows relevant info in the nav bar, if the user is already logged in, there is not need to show sign in for example -->
       <% if user_signed_in? %>
         <li class="nav-item">
+          <!--links between pages in the nav bar created-->
         <%=  link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
         </li>
+
+        <li class="nav-item">
+        <%=  link_to "Check Stock", stocks_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+        <%=  link_to "New Stock", new_stock_path, class: "nav-link" %>
+        </li>
+
         <li class="nav-item">
         <%=  link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
