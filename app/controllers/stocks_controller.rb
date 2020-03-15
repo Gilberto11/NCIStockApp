@@ -1,10 +1,13 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  #creating a before action to set the stock to show only to the correct user, without this users can see each other stocks
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   # GET /stocks
   # GET /stocks.json
   def index
+    @api = StockQuote::Stock.new(api_key:'pk_ed3bf1990f8a4bdcaa33dc9a9f725a7c')
     @stocks = Stock.all
   end
 
@@ -60,6 +63,13 @@ class StocksController < ApplicationController
       format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+ #creating a method to define the correct_user that is been called on the top of this file
+  def correct_user
+    #setting ticker to be the current user and find which stock belongs to the user based on the user id
+    @ticker = current_user.stocks.find_by(id: params[:id])
+    #if the ticker does not match with the user id then display the message below
+    redirect_to stocks_path, notice: "This user is not authorized to edit this stock" if @ticker.nil?
   end
 
   private
