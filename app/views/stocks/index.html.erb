@@ -10,14 +10,18 @@
   </thead>
 
   <tbody>
+    <!-- loop that pulls all stock through the db and renders it in the screen, -->
     <% @stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.ticker %></td>
-        <td><%= stock.user_id %></td>
-        <td><%= link_to 'Show', stock %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <!-- inner loop to check if the stock of a user is  the same as the user id so it only shows stocks that belongs to the user logged in-->
+      <% if stock.user_id == current_user.id %>
+        <tr>
+          <td><%= stock.ticker %></td>
+          <td><%= stock.user_id %></td>
+          <td><%= link_to 'Show', stock %></td>
+          <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
+          <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
