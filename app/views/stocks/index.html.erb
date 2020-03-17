@@ -27,14 +27,20 @@
         <%= @api = StockQuote::Stock.new(api_key:'pk_ed3bf1990f8a4bdcaa33dc9a9f725a7c') %>-->
         <!--error handling in case the lookup button is pressed without any value in the "ticker" field-->
         <% if stock.ticker == "" %>
-         <% @empty = "You must enter a company symbol" %>
+          <% @ticker.company_name = "Company Name does not exist"%>
+          <% @ticker.symbol= "Stock Symnbol does not exist"%>
+          <% @ticker.latest_price= "Price does not exist"%>
+          <% @ticker.market_cap= "Market Cap does not exist"%>
           <!--if stamement for error handling as ticker is was not defined so if the form is filled user would get an error-->
           <% elsif stock.ticker %>
             <!--mapping the stock result to be based on the user input in the field we called ticker-->
             <% @ticker = StockQuote::Stock.quote(stock.ticker) %>
 
               <%if !stock.ticker %>
-                <% @error = "Stock Symnbol does not exist, please try another Symbol"%>
+                <% @ticker.company_name = "Company Name does not exist"%>
+                <% @ticker.symbol= "Stock Symnbol does not exist"%>
+                <% @ticker.latest_price= "Price does not exist"%>
+                <% @ticker.market_cap= "Market Cap does not exist"%>
               <% end %>
 
         <% end %>
