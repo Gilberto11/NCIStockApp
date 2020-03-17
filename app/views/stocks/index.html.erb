@@ -1,62 +1,49 @@
-<h1>Stocks</h1>
 
-<table>
-  <thead>
-    <!--css for the drawing the table-->
-    <style>
-      table, th, td {
-      border: 1px solid black;
-      }
-    </style>
+
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
     <tr>
-      <th>Company Name</th>
-      <th>Symbol</th>
+      <th>Company</th>
+      <th>Ticker</th>
       <th>Current Price</th>
       <th>Market Cap</th>
-      <th colspan="5"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <!-- loop that pulls all stock through the db and renders it in the screen, -->
     <% @stocks.each do |stock| %>
-    <!-- inner loop to check if the stock of a user is  the same as the user id so it only shows stocks that belongs to the user logged in-->
       <% if stock.user_id == current_user.id %>
-
-        <!--api key required in every controller for rendering the stock data 
-        <%= @api = StockQuote::Stock.new(api_key:'pk_ed3bf1990f8a4bdcaa33dc9a9f725a7c') %>-->
-        <!--error handling in case the lookup button is pressed without any value in the "ticker" field-->
-        <% if stock.ticker == "" %>
-          <% @ticker.company_name = "Company Name does not exist"%>
-          <% @ticker.symbol= "Stock Symnbol does not exist"%>
-          <% @ticker.latest_price= "Price does not exist"%>
-          <% @ticker.market_cap= "Market Cap does not exist"%>
-          <!--if stamement for error handling as ticker is was not defined so if the form is filled user would get an error-->
-          <% elsif stock.ticker %>
-            <!--mapping the stock result to be based on the user input in the field we called ticker-->
-            <% @ticker = StockQuote::Stock.quote(stock.ticker) %>
-
-              <%if !stock.ticker %>
-                <% @ticker.company_name = "Company Name does not exist"%>
-                <% @ticker.symbol= "Stock Symnbol does not exist"%>
-                <% @ticker.latest_price= "Price does not exist"%>
-                <% @ticker.market_cap= "Market Cap does not exist"%>
-              <% end %>
-
-        <% end %>
-        <!-- function for setting the format of monetary values-->
         
+    <% @ticker = StockQuote::Stock.quote(stock.ticker) %>
+      <% if !@ticker %>
         <tr>
-          <td><%= @ticker.company_name %></td>
+          <td><%= link_to "Error", stock %></td>
+          <td><%= stock.ticker %></td>
+          <td>N/A</td>
+          
+          <td>N/A</td>
+
+
+          <td><center><%= link_to 'Edit', edit_stock_path(stock) %></center></td>
+          <td><center><%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><%= link_to @ticker.company_name, stock %></td>
           <td><%= @ticker.symbol %></td>
           <td>$<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %></td>
-
+          
           <td>$<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %></td>
 
-          <td><%= link_to 'Show', stock %></td>
-          <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-          <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <td><center><%= link_to 'Edit', edit_stock_path(stock), class: 'btn btn-outline-secondary' %></center></td>
+          <td><center><%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></center></td>
         </tr>
+      
+      <% end %>        
       <% end %>
     <% end %>
   </tbody>

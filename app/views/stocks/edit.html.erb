@@ -1,6 +1,11 @@
-<h1>Editing Stock</h1>
+<div class ="col-md-6 offset-md-3">
+  <!-- adding bootstrap jumbotrom which is a big box behind the form-->
+  <div class ="jumbotron bg-dark text-white">
+		<h1>Editing Stock</h1>
 
-<%= render 'form', stock: @stock %>
+		<%= render 'form', stock: @stock%>
 
-<%= link_to 'Show', @stock %> |
-<%= link_to 'Back', stocks_path %>
+		<%= link_to 'Show', @stock %> |
+		<%= link_to 'Back', stocks_path %>
+	</div>
+</div>
