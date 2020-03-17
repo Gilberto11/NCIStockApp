@@ -2,11 +2,18 @@
 
 <table>
   <thead>
+    <!--css for the drawing the table-->
+    <style>
+      table, th, td {
+      border: 1px solid black;
+      }
+    </style>
     <tr>
       <th>Company Name</th>
       <th>Symbol</th>
       <th>Current Price</th>
-      <th colspan="3"></th>
+      <th>Market Cap</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -31,10 +38,15 @@
               <% end %>
 
         <% end %>
+        <!-- function for setting the format of monetary values-->
+        
         <tr>
           <td><%= @ticker.company_name %></td>
           <td><%= @ticker.symbol %></td>
-          <td>$<%= @ticker.latest_price %></td>
+          <td>$<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %></td>
+
+          <td>$<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %></td>
+
           <td><%= link_to 'Show', stock %></td>
           <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
           <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
