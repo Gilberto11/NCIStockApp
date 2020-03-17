@@ -2,11 +2,11 @@
   <strong>Ticker:</strong>
   <%= @stock.ticker %>
 </p>
-
+<!-- hidding the user id in the show stock page since now the new stock forms also hides the id field as it is autopopulated now
 <p>
   <strong>User:</strong>
   <%= @stock.user_id %>
-</p>
+</p>-->
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>

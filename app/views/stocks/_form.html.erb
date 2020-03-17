@@ -13,12 +13,15 @@
 
   <div class="field">
     <%= form.label :ticker %>
-    <%= form.text_field :ticker %>
+    <%= form.text_field :ticker, id: :stock_ticker%>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <!--Hiding the user id field as it is not required since it is now autopopulated in line 22
+    <%= form.label :user_id %>-->
+    <!--auto populating the id field with the user id as it hard for the user to memorize the id-->
+    <%= form.number_field :user_id, id: :stock_user_id, value: current_user.id, type: :hidden%>
+    
   </div>
 
   <div class="actions">

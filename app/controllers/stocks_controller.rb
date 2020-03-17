@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
   #creating a before action to set the stock to show only to the correct user, without this users can see each other stocks
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]#only the correct user can edit, update and delete
   before_action :authenticate_user!
 
   # GET /stocks
