@@ -11,7 +11,11 @@
 <!-- if the field has a company symbol returns company name and pricer-->
 <% if @stock %>
 	<%= @stock.company_name %><br/>
-	$<%= @stock.latest_price %><br/>
+	Latest Price: $<%= @stock.latest_price %><br/>
+	Source: <%= @stock.latest_source %><br/>
+	Asking Price: $<%= @stock.iex_ask_price %><br/>
+	Bidding Price: $<%= @stock.iex_bid_price %><br/>
+	<%= @stock.attribution %><br/>
 	 
 <!-- else if statment in case the field is empty then return the message defined for the variable empty in the home controller-->
 <% elsif @empty %>
