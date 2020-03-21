@@ -21,5 +21,13 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   	assert_response :success
   end
 
+  test "h2 element has the test'Welcome to the NCI Stock App  Here you can find all Company Tickers'" do 
+    get "http://localhost:3000/home/about"
+    assert_select "h2", "Welcome to the NCI Stock App  Here you can find all Company Tickers"
+  end 
 
+  test "h3 element has the text 'Companies Ticker List'" do
+    get "http://localhost:3000/home/about"
+    assert_select "h3", "Companies Ticker List"
+  end 
 end

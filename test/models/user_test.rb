@@ -11,4 +11,5 @@ class UserTest < ActiveSupport::TestCase
 	refute user.valid?
 	assert_not_nil user.errors[:email] 	
 	end
+
 end

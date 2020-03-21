@@ -5,10 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :stocks
 
-  #validates :email, presence: true
-
-  scope :recent, -> {where('created_at > ?', 1.week.ago)}
-  has_many :stocks
   validates :email, presence: true
 
 end
