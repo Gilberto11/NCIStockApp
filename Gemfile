@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'sqlite3', '~> 1.4'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
@@ -19,10 +18,10 @@ gem 'iex-ruby-client' # gem for the stock api
 gem 'devise', '~> 4.7', '>= 4.7.1' # gem for db third party as well
 
 
-#group :production do
-  #gem 'pg', '~> 1.2', '>= 1.2.3'
+group :production do
+  gem 'pg', '~> 1.2', '>= 1.2.3'
 
-#end
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -30,7 +29,7 @@ group :development, :test do
 end
 
 group :development do
-  #gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '~> 1.4'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
