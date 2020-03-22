@@ -1,9 +1,14 @@
+<div class ="jumbotron bg-dark text-white">
 <h1>NCI Stock App</h1>
+</div>
+<div class ="jumbotron bg-dark text-white">
+<h2> For more details of a company stock, please register or sign in </h2>
+</div>
 
 <!-- create a loop "do" then create a text field with tag ticket and place holder has the message for the user in the field, with a button called lookup-->
 <%= form_tag root_path, :method => 'POST' do%>
 	<%= text_field_tag 'ticker', nil, placeholder: "Enter Ticker Symbol", size: 50 %>
-<%= submit_tag 'Lookup' %>
+<%= submit_tag 'Lookup', class: 'btn btn-outline-secondary' %>
 <% end %>
 
 <br/>
@@ -13,8 +18,6 @@
 	<%= @stock.company_name %><br/>
 	Latest Price: $<%= @stock.latest_price %><br/>
 	Source: <%= @stock.latest_source %><br/>
-	Asking Price: $<%= @stock.iex_ask_price %><br/>
-	Bidding Price: $<%= @stock.iex_bid_price %><br/>
 	<%= @stock.attribution %><br/>
 	 
 <!-- else if statment in case the field is empty then return the message defined for the variable empty in the home controller-->
