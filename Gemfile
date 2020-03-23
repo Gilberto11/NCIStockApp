@@ -16,6 +16,8 @@ gem 'jquery-rails'
 gem 'stock_quote', '~> 3.0' # using a third party gem as part of the requirement
 gem 'iex-ruby-client' # gem for the stock api
 gem 'devise', '~> 4.7', '>= 4.7.1' # gem for db third party as well
+gem 'dotenv-rails'
+
 
 
 group :production do
@@ -35,6 +37,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'foreman'
 end
 
 group :test do

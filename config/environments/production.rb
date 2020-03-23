@@ -1,4 +1,17 @@
 Rails.application.configure do
+
+#smtp gmail for heroku
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "example.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password:ENV["GMAIL_PASSWORD"]
+  }
+# doesn't have to be Heroku, but you get the idea.
+config.action_mailer.default_url_options = { :host => 'yourhostsite.herokuapp.com' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -111,4 +124,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.default_url_options = { host: 'https://ncistockapp.herokuapp.com/'}
+  Rails.application.routes.default_url_options[:host] = 'https://ncistockapp.herokuapp.com/'
 end
