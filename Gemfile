@@ -20,7 +20,6 @@ gem 'devise', '~> 4.7', '>= 4.7.1' # gem for db third party as well
 
 group :production do
   gem 'pg', '~> 1.2', '>= 1.2.3'
-
 end
 
 group :development, :test do
