@@ -129,6 +129,6 @@ config.action_mailer.default_url_options = { :host => 'yourhostsite.herokuapp.co
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  #config.action_mailer.default_url_options = { :host => 'https://ncistockapp.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'https://ncistockapp.herokuapp.com'}
   #Rails.application.routes.default_url_options[:host] = 'https://ncistockapp.herokuapp.com'
 end
